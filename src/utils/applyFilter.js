@@ -4,15 +4,16 @@ export const applyDigitalCameraEffect = (ctx, canvas, type = "flash") => {
 
     const centerX = canvas.width / 2;
     const centerY = canvas.height / 2;
-    const maxDistance = Math.sqrt(centerX * centerX + centerY * centerY);
+
+    // const maxDistance = Math.sqrt(centerX * centerX + centerY * centerY);
 
     for (let i = 0; i < data.length; i += 4) {
-        const x = (i / 4) % canvas.width;
-        const y = Math.floor(i / 4 / canvas.width);
+        // const x = (i / 4) % canvas.width;
+        // const y = Math.floor(i / 4 / canvas.width);
 
-        const dx = x - centerX;
-        const dy = y - centerY;
-        const distance = Math.sqrt(dx * dx + dy * dy);
+        // const dx = x - centerX;
+        // const dy = y - centerY;
+        // const distance = Math.sqrt(dx * dx + dy * dy);
         // const vignette = 1 - distance / maxDistance;
 
         let r = data[i];
@@ -20,34 +21,34 @@ export const applyDigitalCameraEffect = (ctx, canvas, type = "flash") => {
         let b = data[i + 2];
 
         // 🎯 FLASH (overexposed + harsh vignette)
-      if (type === "flash") {
-          // 🎯 warm flash white balance shift
-          r *= 1.15;
-          g *= 1.08;
-          b *= 0.92;
+        if (type === "flash") {
+            // 🎯 warm flash white balance shift
+            r *= 1.15;
+            g *= 1.08;
+            b *= 0.92;
 
-          // 🔆 contrast boost (harsh digicam look)
-          r = (r - 128) * 1.25 + 128;
-          g = (g - 128) * 1.25 + 128;
-          b = (b - 128) * 1.25 + 128;
+            // 🔆 contrast boost (harsh digicam look)
+            r = (r - 128) * 1.25 + 128;
+            g = (g - 128) * 1.25 + 128;
+            b = (b - 128) * 1.25 + 128;
 
-          // 💡 flash brightness pop
-          const flash = 30;
-          r += flash;
-          g += flash;
-          b += flash;
+            // 💡 flash brightness pop
+            const flash = 30;
+            r += flash;
+            g += flash;
+            b += flash;
 
-          // 🌟 highlight bloom
-          if (r > 200) r += 10;
-          if (g > 200) g += 10;
-          if (b > 200) b += 10;
+            // 🌟 highlight bloom
+            if (r > 200) r += 10;
+            if (g > 200) g += 10;
+            if (b > 200) b += 10;
 
-          // 🌫️ CCD grain
-          const noise = (Math.random() - 0.5) * 30;
-          r += noise;
-          g += noise;
-          b += noise;
-      }
+            // 🌫️ CCD grain
+            const noise = (Math.random() - 0.5) * 30;
+            r += noise;
+            g += noise;
+            b += noise;
+        }
 
         // 📱 NOKIA (cool, slightly green/blue, low quality digital cam)
         if (type === "nokia") {
