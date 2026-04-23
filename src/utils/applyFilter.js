@@ -2,8 +2,8 @@ export const applyDigitalCameraEffect = (ctx, canvas, type = "flash") => {
     const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
     const data = imageData.data;
 
-    const centerX = canvas.width / 2;
-    const centerY = canvas.height / 2;
+    // const centerX = canvas.width / 2;
+    // const centerY = canvas.height / 2;
 
     // const maxDistance = Math.sqrt(centerX * centerX + centerY * centerY);
 
