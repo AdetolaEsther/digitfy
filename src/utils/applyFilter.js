@@ -13,7 +13,7 @@ export const applyDigitalCameraEffect = (ctx, canvas, type = "flash") => {
         const dx = x - centerX;
         const dy = y - centerY;
         const distance = Math.sqrt(dx * dx + dy * dy);
-        const vignette = 1 - distance / maxDistance;
+        // const vignette = 1 - distance / maxDistance;
 
         let r = data[i];
         let g = data[i + 1];
